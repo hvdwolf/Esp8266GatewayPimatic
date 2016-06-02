@@ -194,7 +194,6 @@ void incomingMessageESP(const MyMessage &message) {
   serial(PSTR("%d;%d;%d;%d;%d;%s\n"),message.sender, message.sensor, mGetCommand(message), mGetAck(message), message.type, message.getString(convBuf));
   Serial.print("Node-Sensor (yourvariable) ");Serial.print(message.sender);Serial.print("-");Serial.print(message.sensor);Serial.print("; Value ");Serial.println(message.getString(convBuf));
 
-  //send_data(message.sender, message.sensor, message.getString(convBuf));
   char host_char_array[pim_host.length()+1];
   pim_host.toCharArray(host_char_array,pim_host.length()+1);
   
