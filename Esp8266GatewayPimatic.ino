@@ -104,7 +104,7 @@ char authVal[40];
 char authValEncoded[40];
 
 ///////////// Configure a static ip address ////////////
-IPAddress ip(192,168,144,245);
+IPAddress ip(192,168,144,245);        // Leave empty if you want a dynamic ip address
 IPAddress gateway(192,168,144,1);
 IPAddress subnet(255,255,255,0);
 
@@ -237,8 +237,11 @@ void checkwifi(){
       delay(500);
       Serial.print(".");
     }
-    // When connected set static ip
-    WiFi.config(ip, gateway, subnet);
+    // When connected set static ip, but only if an ip address has been provided
+    // in the heading of this ino
+    if (ip != ""){
+      WiFi.config(ip, gateway, subnet);
+    }
   Serial.println("Connected!");  Serial.print("IP: "); Serial.println(WiFi.localIP());  Serial.flush();
   }
 }
