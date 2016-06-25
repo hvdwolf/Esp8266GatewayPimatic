@@ -164,6 +164,8 @@ void setup() {
 }
 
 void presentation() {
+  // Send the sketch version information to the gateway and Controller
+  sendSketchInfo("REST-api gateway to Pimatic", "1.1");
   // Present locally attached sensors here    
 }
 
