@@ -84,8 +84,12 @@
 
 #define MY_GATEWAY_ESP8266
 
+
 #define MY_ESP8266_SSID "MySSID"
 #define MY_ESP8266_PASSWORD "MyVerySecretPassword"
+
+
+
 
 // Enable UDP communication
 //#define MY_USE_UDP
@@ -139,6 +143,22 @@
 #endif
 
 #include <MySensors.h>
+#include <Base64.h>
+
+///////////// pimatic settings ////////////
+String pim_host = "192.168.144.128";   // your pimatic server
+const int pim_port = 80;                // your pimatic server port
+String pim_user =  "pimuser";             // the user you use to read from & write to pimatic
+String pim_pass =  "pimuser_password";             // The password for that pim_user
+
+char authVal[40];  
+char authValEncoded[40];
+
+// send data to pimatic
+WiFiClient client;
+
+
+#define ARRAY_SIZE(x)  (sizeof(x)/sizeof(x[0]))
 
 void setup() { 
 }
@@ -152,13 +172,13 @@ void loop() {
   // Send locally attached sensors data here
 }
 
-void incomingMessageESP(const MyMessage &message) {
-  String yourdata;
+void receive(const MyMessage &message) {
+   String yourdata;
    char yourvariable[10];
+   char convBuf[MAX_PAYLOAD*2+1];
+
     
-  // Pass along the message from sensors to serial line
-  serial(PSTR("%d;%d;%d;%d;%d;%s\n"),message.sender, message.sensor, mGetCommand(message), mGetAck(message), message.type, message.getString(convBuf));
-  Serial.print("Node-Sensor (variable to use in pimatic) ");Serial.print(message.sender);Serial.print("-");Serial.print(message.sensor);Serial.print("; Value ");Serial.println(message.getString(convBuf));
+  // Pass along the message from sensors to serial line.Enabled by the definition of MY_DEBUG in the top of this ino
 
   char host_char_array[pim_host.length()+1];
   pim_host.toCharArray(host_char_array,pim_host.length()+1);
