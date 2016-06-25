@@ -2,7 +2,7 @@
 This mysensors version 2.0 version EspGateway2866 pushes sensor values directly to Pimatic via the REST-API
 
 
-This version is for the mysensors (development) version 2.0 of. If you want a version for the mysensors 1.5 version check my [other branch](https://github.com/hvdwolf/Esp8266GatewayPimatic/tree/master) 
+This version is for the mysensors (development) version 2.0. If you want a version for the mysensors 1.5 version check my [other branch](https://github.com/hvdwolf/Esp8266GatewayPimatic/tree/master) 
 
 Both the previous mysensors 1.5 and this mysensors 2.0 version are based on [this post](https://forum.mysensors.org/topic/3098/esp8266-as-wifi-gateway-that-posts-to-thingspeak) 
 in the mysensors forum leading to [this repository](https://github.com/Lendog/Mysensors-ESP8266-Wifi-gateway-post-to-thingspeak).
